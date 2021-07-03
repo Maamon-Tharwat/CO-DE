@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    android:backgroundTint="#029AC1"
+    app:cardCornerRadius="30dp">
+
+    <LinearLayout
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/headerUserImage"
+                android:layout_width="59dp"
+                android:layout_height="59dp"
+                android:layout_gravity="center"
+                 android:background="@drawable/ic_ellipse_33"/>
+
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/headerUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:hint="@string/user_name"
+                    android:textColorHint="@color/white"
+                    android:paddingStart="5dp"/>
+
+                <TextView
+                    android:textColor="@color/white"
+                    android:id="@+id/headerDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/dateformat"
+                    android:textColorHint="@color/white"
+                    android:paddingStart="5dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:textColor="@color/white"
+            android:id="@+id/postitemtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColorHint="@color/white"
+            android:padding="2dp"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:textColor="@color/white"
+            android:id="@+id/postitempost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:padding="2dp"/>
+        <!--            android:hint="@string/lorem"-->
+        <!--            android:textColorHint="@color/white"-->
+
+
+        <Button
+            android:backgroundTint="@color/white"
+            android:textColor="#029AC1"
+            android:id="@+id/itempostcomment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/read_more"
+            android:drawableEnd="@drawable/ic_right_arrow__1_"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "875766744042",
+    "project_id": "scan-229ae",
+    "storage_bucket": "scan-229ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875766744042:android:3615d26ccef9b047756893",
+        "android_client_info": {
+          "package_name": "com.example.wifiscan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875766744042-2neffbkpjuv7qlpjcsqqnm7ubkguajre.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wifiscan",
+            "certificate_hash": "bdc13eesofgbx9TwfQUU1d3SHfHRgJztigMZ7bf1"
+          }
+        },
+        {
+          "client_id": "875766744042-3vmghsump22stm34hrk39c0h9r00teqc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtUwGLnOA7TgNs9p7bTXQTGYh9VYSXRw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875766744042-3vmghsump22stm34hrk39c0h9r00teqc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

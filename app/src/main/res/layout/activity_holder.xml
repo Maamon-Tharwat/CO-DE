@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activities.Holder">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/holderviewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:background="@color/white" />
+
+    <com.gauravk.bubblenavigation.BubbleNavigationConstraintView
+        android:id="@+id/holdertabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tablayout"
+        android:elevation="4dp"
+        android:padding="6dp"
+        app:bnc_mode="spread">
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/hometab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_active="true"
+            app:bt_colorActive="@color/black"
+            app:bt_colorInactive="@color/white"
+            app:bt_title="Home"
+            app:bt_icon="@drawable/ic_home_ic"/>
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/donationtab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_active="false"
+            app:bt_colorActive="@color/black"
+            app:bt_colorInactive="@color/white"
+            app:bt_title="Donation"
+            app:bt_icon="@drawable/ic_heart"/>
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/profiletab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_active="false"
+            app:bt_colorActive="@color/black"
+            app:bt_colorInactive="@color/white"
+            app:bt_title="Profile"
+            android:textAlignment="center"
+            app:bt_icon="@drawable/ic_user"/>
+
+    </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
+
+</LinearLayout>
