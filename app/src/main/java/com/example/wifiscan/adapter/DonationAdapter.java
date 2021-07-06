@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.example.wifiscan.R;
 import com.example.wifiscan.model.DonationModel;
 
@@ -48,16 +47,17 @@ public class DonationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemCount() {
-        return data.size()+1;
+        return data.size();
     }
 
     @Override
     public int getItemViewType(int position) {
-        if(position==0){
-            return HEADER;
-        }else {
-            return DONATION;
-        }
+//        if(position==0){
+//            return HEADER;
+//        }else {
+//            return DONATION;
+//        }
+        return DONATION;
     }
 
     class DonationHolder extends RecyclerView.ViewHolder {

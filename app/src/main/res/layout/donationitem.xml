@@ -7,7 +7,8 @@
     android:background="@drawable/ic_donationbg"
     app:cardCornerRadius="31dp"
     android:layout_margin="5dp"
-    android:padding="5dp">
+    android:padding="5dp"
+    app:cardElevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
