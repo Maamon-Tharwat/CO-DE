@@ -1,12 +1,5 @@
 package com.example.wifiscan.ui;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -25,13 +18,19 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.wifiscan.R;
-import com.example.wifiscan.ui.activities.SignInActivity;
 import com.example.wifiscan.adapter.MacAdapter;
+import com.example.wifiscan.ui.activities.SignInActivity;
 import com.example.wifiscan.utils.PermissionsUtils;
 
 import java.net.NetworkInterface;
-import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -39,7 +38,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private MacAdapter adapter;
-    private ArrayList<WifiP2pDevice> data = new ArrayList<>();
+    private final ArrayList<WifiP2pDevice> data = new ArrayList<>();
 
     WifiP2pManager manager;
     Channel channel;
@@ -65,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
 
         TextView mac = findViewById(R.id.pmac);
         Button scan = findViewById(R.id.scan);
-        TextView dmac = findViewById(R.id.dmac);
 
         Button test = findViewById(R.id.test);
         test.setOnClickListener(e -> {
@@ -76,12 +74,10 @@ public class MainActivity extends AppCompatActivity {
 
         mac.setText(getMacAddr());
 
-        if (PermissionsUtils.checkAndRequest(this, Manifest.permission.ACCESS_FINE_LOCATION,
+        PermissionsUtils.checkAndRequest(this, Manifest.permission.ACCESS_FINE_LOCATION,
                 PermissionsUtils.MY_PERMISSIONS_REQUEST_EXAMPLE, "Explain here why the app needs permissions", (dialog, which) -> {
                     // YOUR CANCEL CODE
-                })) {
-            // YOUR BASE METHOD
-        }
+                });// YOUR BASE METHOD
 
 
         manager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
@@ -207,32 +203,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case PermissionsUtils.MY_PERMISSIONS_REQUEST_EXAMPLE:
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // permission was granted
-                    // YOUR BASE METHOD
-                } else {
-                    // permission denied
-                    boolean showRationale = false;
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                        showRationale = shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION);
-                    }
-                    if (!showRationale) {
-                        // user denied flagging NEVER ASK AGAIN
-                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                        builder.setMessage("WHY THIS PERM IS MANDATORY TO USED THIS APP")
-                                .setPositiveButton(getResources().getString(android.R.string.ok), (dialog, which) -> {
-                                    PermissionsUtils.startInstalledAppDetailsActivity(this);
-                                    this.finish();
-                                }).setCancelable(false).show();
-                    } else {
-                        // user denied WITHOUT never ask again
-                        // YOUR CANCEL CODE
-                    }
+        if (requestCode == PermissionsUtils.MY_PERMISSIONS_REQUEST_EXAMPLE) {// If request is cancelled, the result arrays are empty.
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // permission was granted
+                // YOUR BASE METHOD
+                System.out.println("hi");
+            } else {
+                // permission denied
+                boolean showRationale;
+                showRationale = shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION);
+                if (!showRationale) {
+                    // user denied flagging NEVER ASK AGAIN
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setMessage("WHY THIS PERM IS MANDATORY TO USED THIS APP")
+                            .setPositiveButton(getResources().getString(android.R.string.ok), (dialog, which) -> {
+                                PermissionsUtils.startInstalledAppDetailsActivity(this);
+                                this.finish();
+                            }).setCancelable(false).show();
                 }
-                break;
+            }
         }
     }
 
@@ -241,9 +230,9 @@ public class MainActivity extends AppCompatActivity {
 
 class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
 
-    private WifiP2pManager manager;
-    private Channel channel;
-    private MainActivity activity;
+    private final WifiP2pManager manager;
+    private final Channel channel;
+    private final MainActivity activity;
 
     public WiFiDirectBroadcastReceiver(WifiP2pManager manager, Channel channel,
                                        MainActivity activity) {
@@ -290,12 +279,11 @@ class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
                 }
                 manager.requestPeers(channel, activity.myPeerListListener);
             }
-        } else if (WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)) {
-            // Respond to new connection or disconnections
-//            manager
-        } else if (WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION.equals(action)) {
-            // Respond to this device's wifi state changing
-        }
+        }  // Respond to new connection or disconnections
+        //            manager
+        // Respond to this device's wifi state changing
+
+
     }
 }
 

@@ -1,17 +1,16 @@
 package com.example.wifiscan.ui.activities;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Intent;
-import android.os.Bundle;
-
 import com.example.wifiscan.R;
 import com.example.wifiscan.databinding.ActivityNewPostBinding;
 import com.example.wifiscan.model.PostModel;
-import com.example.wifiscan.model.UserModel;
-import com.example.wifiscan.ui.fragment.PostViewModel;
+import com.example.wifiscan.ui.viewModels.PostViewModel;
+import com.example.wifiscan.ui.viewModels.UserViewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -36,6 +35,7 @@ public class NewPostActivity extends AppCompatActivity {
             binding.newpostuser.setText(model.getName());
 
         });
+
         PostViewModel postViewModel=new ViewModelProvider(this).get(PostViewModel.class);
         binding.newpostadd.setOnClickListener(v -> {
             Date c = Calendar.getInstance().getTime();
@@ -47,8 +47,6 @@ public class NewPostActivity extends AppCompatActivity {
             post.setTitle(binding.newposttitle.getText().toString());
             post.setDescription(binding.newpostcontent.getText().toString());
             postViewModel.addPost(post);
-            Intent intent=new Intent(NewPostActivity.this,Holder.class);
-            startActivity(intent);
             finish();
         });
     }

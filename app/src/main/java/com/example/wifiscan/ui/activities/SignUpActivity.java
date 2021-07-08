@@ -2,18 +2,16 @@ package com.example.wifiscan.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.wifiscan.R;
 import com.example.wifiscan.model.UserModel;
-import com.google.android.gms.common.SignInButton;
+import com.example.wifiscan.ui.viewModels.UserViewModel;
 
 
 public class SignUpActivity extends AppCompatActivity {

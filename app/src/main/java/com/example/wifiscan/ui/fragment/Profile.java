@@ -2,17 +2,22 @@ package com.example.wifiscan.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.wifiscan.R;
 import com.example.wifiscan.databinding.FragmentProfileBinding;
 import com.example.wifiscan.ui.activities.SignInActivity;
-import com.example.wifiscan.ui.activities.UserViewModel;
+import com.example.wifiscan.ui.viewModels.UserViewModel;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.Objects;
 
 public class Profile extends Fragment {
 
@@ -27,22 +32,22 @@ public class Profile extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        FragmentProfileBinding binding= DataBindingUtil.inflate(inflater,R.layout.fragment_profile, container, false);
-        View root=binding.getRoot();
-        UserViewModel userViewModel=new ViewModelProvider(this).get(UserViewModel.class);
-        userViewModel.firebaseUserMutableLiveData.observe(this,s -> {
-            if(s.equals("Sign out")){
-                Intent intent=new Intent(getContext(), SignInActivity.class);
+        FragmentProfileBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
+        View root = binding.getRoot();
+        UserViewModel userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        userViewModel.firebaseUserMutableLiveData.observe(this, s -> {
+            if (s.equals("Sign out")) {
+                Intent intent = new Intent(getContext(), SignInActivity.class);
                 startActivity(intent);
-                getActivity().finish();
+                Objects.requireNonNull(getActivity()).finish();
             }
         });
         userViewModel.getCurrentUser();
-        userViewModel.userData.observe(this,userModel -> {
-            if(userModel != null) {
+        userViewModel.userData.observe(this, userModel -> {
+            if (userModel != null) {
                 binding.profileUserName.setText(userModel.getName());
                 binding.profileName.setText(userModel.getName());
                 binding.profileAddress.setText(userModel.getAddress());

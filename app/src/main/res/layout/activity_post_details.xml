@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.DetailsActivity"
+    tools:context=".ui.activities.PostDetailsActivity"
     android:orientation="vertical"
     android:gravity="center">
 
@@ -44,14 +44,15 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Name" />
+            android:hint="@string/name"
+            android:importantForAutofill="no" />
 
         <Button
             android:id="@+id/sendComment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="send" />
+            android:text="@string/send" />
     </LinearLayout>
 
 

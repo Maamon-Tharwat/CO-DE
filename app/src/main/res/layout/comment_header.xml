@@ -13,6 +13,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/temp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <LinearLayout
@@ -29,6 +30,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:contentDescription="@string/user_image"
             android:id="@+id/headerUserImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -64,7 +66,7 @@
         android:id="@+id/headerPost"
         android:layout_width="333dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:hint="@string/post"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

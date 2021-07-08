@@ -1,4 +1,4 @@
-package com.example.wifiscan.ui.fragment;
+package com.example.wifiscan.ui.viewModels;
 
 import android.util.Log;
 
@@ -10,25 +10,27 @@ import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class PostViewModel extends ViewModel {
     private static final String TAG = "PostViewModel";
-    public static final String COLLECTION_PATH = "posts";
-    MutableLiveData<ArrayList<PostModel>> posts=new MutableLiveData<>();
+    private static final String COLLECTION_PATH = "posts";
+    public MutableLiveData<ArrayList<PostModel>> posts = new MutableLiveData<>();
     private FirebaseFirestore database;
 
-    public void getPosts(){
+    public void getPosts() {
         posts.setValue(new ArrayList<>());
 
-        database=FirebaseFirestore.getInstance();
+        database = FirebaseFirestore.getInstance();
         database.collection(COLLECTION_PATH).addSnapshotListener((value, error) -> {
-            if(error!=null){
+            if (error != null) {
                 Log.w(TAG, "listen:error", error);
                 return;
             }
+            assert value != null;
             for (DocumentChange dc : value.getDocumentChanges()) {
                 if (dc.getType() == DocumentChange.Type.ADDED) {
-                    posts.getValue().add(dc.getDocument().toObject(PostModel.class));
+                    Objects.requireNonNull(posts.getValue()).add(dc.getDocument().toObject(PostModel.class));
                     posts.setValue(posts.getValue());
                 }
             }

@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.example.wifiscan.R;
 import com.example.wifiscan.model.CommentModel;
 import com.example.wifiscan.model.PostModel;
@@ -42,10 +41,10 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view ;
         if(viewType==HEADER){
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.commentheader, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.comment_header, parent, false);
             return new CommentAdapter.HeaderHolder(view);
         }else {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.commentitem, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.comment_item, parent, false);
             return new CommentHolder(view);
         }
 

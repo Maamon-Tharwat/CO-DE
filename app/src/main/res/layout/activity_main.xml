@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/test"
-        android:text="start test"/>
+        android:text="@string/start_test" />
 
     <TextView
         android:id="@+id/pmac"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/dmac"/>
     <Button
-        android:text="scan"
+        android:text="@string/scan"
         android:id="@+id/scan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        tools:listitem="@layout/deviceitem"/>
+        tools:listitem="@layout/device_item" />
 
 </LinearLayout>
 

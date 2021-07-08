@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.wifiscan.R;
+import com.example.wifiscan.ui.viewModels.UserViewModel;
 
 
 public class SignInActivity extends AppCompatActivity {

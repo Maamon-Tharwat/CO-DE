@@ -1,37 +1,35 @@
 package com.example.wifiscan.ui.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.wifiscan.R;
 import com.example.wifiscan.adapter.CommentAdapter;
-import com.example.wifiscan.adapter.PostAdapter;
 import com.example.wifiscan.model.CommentModel;
 import com.example.wifiscan.model.PostModel;
-import com.example.wifiscan.model.UserModel;
+import com.example.wifiscan.ui.viewModels.CommentViewModel;
+import com.example.wifiscan.ui.viewModels.UserViewModel;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class DetailsActivity extends AppCompatActivity {
+public class PostDetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details);
+        setContentView(R.layout.activity_post_details);
         CommentModel commentModel = new CommentModel();
 
-        CommentViewModel commentViewModel= new ViewModelProvider(this).get(CommentViewModel.class);
+        CommentViewModel commentViewModel = new ViewModelProvider(this).get(CommentViewModel.class);
 
         String postID = ((PostModel) getIntent().getSerializableExtra("post")).getId();
         commentModel.setPostID(postID);

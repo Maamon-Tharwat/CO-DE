@@ -1,6 +1,8 @@
 package com.example.wifiscan.model;
 
-public class DonationModel {
+import java.io.Serializable;
+
+public class DonationModel implements Serializable {
     private String id;
     private String userID;
     private String userName;
@@ -9,10 +11,11 @@ public class DonationModel {
     private String description;
     private String medName;
     private String image;
+    private String date;
     private int amount;
     private double price;
 
-    public DonationModel(String id, String userID, String userName, String userImage, String userPhone, String description, String medName, String image, int amount, double price) {
+    public DonationModel(String id, String userID, String userName, String userImage, String userPhone, String description, String medName, String image, String date, int amount, double price) {
         this.id = id;
         this.userID = userID;
         this.userName = userName;
@@ -21,6 +24,7 @@ public class DonationModel {
         this.description = description;
         this.medName = medName;
         this.image = image;
+        this.date = date;
         this.amount = amount;
         this.price = price;
     }
@@ -106,5 +110,13 @@ public class DonationModel {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

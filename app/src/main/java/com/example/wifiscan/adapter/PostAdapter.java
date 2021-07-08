@@ -12,11 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.example.wifiscan.R;
 import com.example.wifiscan.model.PostModel;
-import com.example.wifiscan.model.UserModel;
-import com.example.wifiscan.ui.activities.DetailsActivity;
+import com.example.wifiscan.ui.activities.PostDetailsActivity;
 
 import java.util.ArrayList;
 
@@ -24,11 +22,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     ArrayList<PostModel> posts;
     Context context;
-    UserModel userModel;
 
-    public PostAdapter(UserModel model) {
+    public PostAdapter() {
         this.posts = new ArrayList<>();
-        userModel=model;
     }
 
     public ArrayList<PostModel> getPosts() {
@@ -42,7 +38,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.postitem, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -53,7 +49,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.title.setText(posts.get(position).getTitle());
         holder.post.setText(posts.get(position).getDescription());
         holder.more.setOnClickListener(v -> {
-            Intent intent=new Intent(context, DetailsActivity.class);
+            Intent intent = new Intent(context, PostDetailsActivity.class);
             intent.putExtra("post",posts.get(position));
             context.startActivity(intent);
         });

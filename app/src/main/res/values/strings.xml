@@ -34,4 +34,18 @@
     <string name="about">ABOUT</string>
     <string name="setting">Setting</string>
     <string name="my_posts">My Posts</string>
+    <string name="medicine_name">Medicine Name</string>
+    <string name="temp">image</string>
+    <string name="take_care">Take care</string>
+    <string name="of_yourself">of yourself</string>
+    <string name="user_image">user image</string>
+    <string name="description">Description</string>
+    <string name="price">Price</string>
+    <string name="amount">Amount</string>
+    <string name="about_the_product">About The Product</string>
+    <string name="start_test">start test</string>
+    <string name="scan">scan</string>
+    <string name="med_name">Med Name</string>
+
+    <string name="send">send</string>
 </resources>

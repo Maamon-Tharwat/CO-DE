@@ -7,19 +7,20 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
 
     <application
+        android:fullBackupContent="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WIFIScan">
-        <activity android:name=".ui.activities.NewDonationActivity"></activity>
+        <activity android:name=".ui.activities.DonationDetailsActivity" />
+        <activity android:name=".ui.activities.NewDonationActivity" />
         <activity android:name=".ui.activities.Holder" />
         <activity android:name=".ui.activities.NewPostActivity" />
-        <activity android:name=".ui.activities.DetailsActivity" />
+        <activity android:name=".ui.activities.PostDetailsActivity" />
         <activity android:name=".ui.activities.SignUpActivity" />
         <activity android:name=".ui.activities.SignInActivity" />
         <activity android:name=".ui.MainActivity">

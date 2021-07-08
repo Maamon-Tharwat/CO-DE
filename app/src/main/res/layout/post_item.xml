@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -27,7 +28,8 @@
                 android:layout_width="59dp"
                 android:layout_height="59dp"
                 android:layout_gravity="center"
-                 android:background="@drawable/ic_ellipse_33"/>
+                android:background="@drawable/ic_ellipse_33"
+                android:contentDescription="@string/temp" />
 
             <LinearLayout
                 android:layout_margin="10dp"
@@ -43,7 +45,8 @@
                     android:textColor="@color/white"
                     android:hint="@string/user_name"
                     android:textColorHint="@color/white"
-                    android:paddingStart="5dp"/>
+                    android:paddingStart="5dp"
+                    tools:ignore="RtlSymmetry" />
 
                 <TextView
                     android:textColor="@color/white"
@@ -52,7 +55,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/dateformat"
                     android:textColorHint="@color/white"
-                    android:paddingStart="5dp"/>
+                    android:paddingStart="5dp"
+                    tools:ignore="RtlSymmetry" />
             </LinearLayout>
         </LinearLayout>
 
