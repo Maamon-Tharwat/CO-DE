@@ -13,7 +13,7 @@
         android:layout_height="274dp"
         android:contentDescription="@string/temp"
         android:scaleType="center"
-        android:src="@drawable/ic_iconfinder_106230_add_icon"
+        app:srcCompat="@drawable/ic_iconfinder_106230_add_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.468"

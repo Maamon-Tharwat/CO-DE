@@ -9,7 +9,7 @@
         android:layout_width="455dp"
         android:layout_height="309dp"
         android:scaleType="centerCrop"
-        android:src="@mipmap/med_foreground"
+        app:srcCompat="@mipmap/med_foreground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
