@@ -5,14 +5,11 @@ import java.io.Serializable;
 public class DeviceModel implements Serializable {
     String id;
     String date;
-    String latitude;
-    String longitude;
 
-    public DeviceModel(String id, String date, String latitude, String longitude) {
+    public DeviceModel(String id, String date) {
         this.id = id;
         this.date = date;
-        this.latitude = latitude;
-        this.longitude = longitude;
+
     }
 
     public DeviceModel() {
@@ -34,19 +31,4 @@ public class DeviceModel implements Serializable {
         this.date = date;
     }
 
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
 }

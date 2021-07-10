@@ -53,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
     @SuppressLint({"HardwareIds"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {

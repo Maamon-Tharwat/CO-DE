@@ -23,13 +23,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/headerUserImage"
-                android:layout_width="59dp"
-                android:layout_height="59dp"
-                android:layout_gravity="center"
-                android:background="@drawable/ic_ellipse_33"
-                android:contentDescription="@string/temp" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="30dp">
+
+                <ImageView
+                    android:id="@+id/headerUserImage"
+                    android:layout_width="59dp"
+                    android:layout_height="59dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/temp"
+                    android:scaleType="centerCrop" />
+
+            </androidx.cardview.widget.CardView>
 
             <LinearLayout
                 android:layout_margin="10dp"

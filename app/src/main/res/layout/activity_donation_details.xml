@@ -28,7 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.107"
-        app:layout_constraintStart_toEndOf="@+id/donationDetailUserImage"
+        app:layout_constraintStart_toEndOf="@+id/donationDetailCard"
         app:layout_constraintTop_toBottomOf="@+id/donationDetailImage"
         app:layout_constraintVertical_bias="0.089" />
 
@@ -101,7 +101,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/donationDetailUserImage"
+        android:id="@+id/donationDetailCard"
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:cardCornerRadius="30dp"
@@ -113,6 +113,7 @@
         app:layout_constraintVertical_bias="0.049">
 
         <ImageView
+            android:id="@+id/donationDetailUserImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/temp"

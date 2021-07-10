@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.os.Handler;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +19,7 @@ public class CODEService {
     public static final int MESSAGE_READ = 2;
     public static final int MESSAGE_WRITE = 3;
     private static final String TAG = "CODEService";
-    private static final String appname = "CO-DE";
+    private static final String appName = "CO-DE";
     private static final UUID uuid = UUID.fromString("990de5c8-2783-44c9-9d20-0c7bb75a1e36");
     private final BluetoothAdapter bluetoothAdapter;
     private final Handler handler;
@@ -36,6 +37,7 @@ public class CODEService {
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         start();
         handler = handler1;
+
     }
 
     //start accept thread
@@ -78,7 +80,7 @@ public class CODEService {
             BluetoothServerSocket socket = null;
 
             try {
-                socket = bluetoothAdapter.listenUsingInsecureRfcommWithServiceRecord(appname, uuid);
+                socket = bluetoothAdapter.listenUsingInsecureRfcommWithServiceRecord(appName, uuid);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -176,12 +178,14 @@ public class CODEService {
 
         @Override
         public void run() {
+            Log.d(TAG, "run: read");
             byte[] buffer = new byte[1024];
             int bytes;
             while (true) {
 
                 try {
                     bytes = inputStream.read(buffer);
+                    Log.d(TAG, "run: " + new String(buffer, Charset.defaultCharset()));
                     handler.obtainMessage(MESSAGE_READ, bytes, 1, buffer)
                             .sendToTarget();
                 } catch (IOException e) {
@@ -189,9 +193,12 @@ public class CODEService {
                     break;
                 }
             }
+            cancel();
         }
 
         public void write(byte[] bytes) {
+            Log.d(TAG, "write: ");
+
             String text = new String(bytes, Charset.defaultCharset());
 
             try {
@@ -201,7 +208,7 @@ public class CODEService {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            cancel();
+
         }
 
         public void cancel() {

@@ -7,39 +7,84 @@
 
     </data>
 
-    <LinearLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
         tools:context=".ui.activities.NewPostActivity">
 
         <TextView
             android:id="@+id/newpostuser"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_width="228dp"
+            android:layout_height="33dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.025" />
 
         <EditText
             android:id="@+id/newposttitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/title"
-            android:inputType="textShortMessage|textAutoComplete" />
+            android:inputType="textShortMessage|textAutoComplete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newpostuser"
+            app:layout_constraintVertical_bias="0.072" />
 
         <EditText
             android:id="@+id/newpostcontent"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="397dp"
+            android:layout_height="568dp"
             android:layout_weight="1"
             android:gravity="top"
             android:hint="@string/write_your_post"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newposttitle"
+            app:layout_constraintVertical_bias="0.106" />
 
         <Button
             android:id="@+id/newpostadd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add" />
+            android:text="@string/post"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.922"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newpostcontent"
+            app:layout_constraintVertical_bias="0.53" />
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/newPostUserImage"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/newpostuser"
+            app:layout_constraintHorizontal_bias="0.34"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.026"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageButton
+            android:id="@+id/newPostImagePicker"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/newpostadd"
+            app:layout_constraintHorizontal_bias="0.068"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newpostcontent"
+            app:srcCompat="@drawable/ic_camera" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

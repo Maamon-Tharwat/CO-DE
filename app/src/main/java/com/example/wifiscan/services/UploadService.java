@@ -60,6 +60,9 @@ public class UploadService extends Service {
                 isInternetAvailable();
             }
         };
+
+        Timer timer = new Timer();
+        timer.schedule(task, 12 * 1000);
     }
 
 
@@ -67,8 +70,7 @@ public class UploadService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         //Toast.makeText(this, "Upload Started", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onStartCommand: Upload Started");
-        Timer timer = new Timer();
-        timer.schedule(task, 60 * 60 * 1000);
+
         return START_STICKY;
     }
 
@@ -91,6 +93,7 @@ public class UploadService extends Service {
     }
 
     private void uploadNearby() {
+        Log.d(TAG, "uploadNearby: ");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         for (DeviceModel model : nearby) {
@@ -104,8 +107,10 @@ public class UploadService extends Service {
             try {
                 InetAddress ipAddr = InetAddress.getByName("google.com");
                 //You can replace it with your name
-                if (!ipAddr.equals("") && nearby.size() != 0) {
+                if (!ipAddr.equals("") & nearby.size() != 0) {
                     uploadNearby();
+                    Log.d(TAG, "isInternetAvailable: ");
+                    break;
                 }
 
             } catch (Exception ignored) {

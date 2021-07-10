@@ -12,11 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.wifiscan.R;
 import com.example.wifiscan.model.DonationModel;
 import com.example.wifiscan.ui.activities.DonationDetailsActivity;
 
 import java.util.ArrayList;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class DonationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -25,7 +28,6 @@ public class DonationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public static final int DONATION = 2;
     ArrayList<DonationModel> data;
 
-    Context context;
 
     public DonationAdapter() {
         this.data = new ArrayList<>();
@@ -54,10 +56,19 @@ public class DonationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             DonationHolder donationHolder = (DonationHolder) holder;
             donationHolder.medName.setText(data.get(position).getMedName());
             donationHolder.view.setOnClickListener(v -> {
-                Intent intent = new Intent(context, DonationDetailsActivity.class);
+                Intent intent = new Intent(donationHolder.context, DonationDetailsActivity.class);
                 intent.putExtra("donation", data.get(position));
-                context.startActivity(intent);
+                donationHolder.context.startActivity(intent);
             });
+            if (data.get(position).getImage() != null) {
+                int radius = 125; // corner radius, higher value = more rounded
+                int margin = 2; // crop margin, set to 0 for corners with no crop
+                Glide.with(donationHolder.context)
+                        .load(data.get(position).getImage())
+                        .centerCrop() // scale image to fill the entire ImageView
+                        .transform(new RoundedCornersTransformation(radius, margin))
+                        .into(donationHolder.medImage);
+            }
         }
     }
 
@@ -83,11 +94,12 @@ public class DonationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    class DonationHolder extends RecyclerView.ViewHolder {
+    static class DonationHolder extends RecyclerView.ViewHolder {
 
         ImageView medImage;
         TextView medName;
         CardView view;
+        Context context;
 
         public DonationHolder(@NonNull View itemView) {
             super(itemView);

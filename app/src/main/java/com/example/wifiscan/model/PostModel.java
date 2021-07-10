@@ -3,6 +3,7 @@ package com.example.wifiscan.model;
 import java.io.Serializable;
 
 public class PostModel implements Serializable {
+
     private String id;
     private String userID;
     private String userName;
@@ -10,9 +11,9 @@ public class PostModel implements Serializable {
     private String title;
     private String description;
     private String date;
-    private String[] imageUrl;
+    private String imageUrl;
 
-    public PostModel(String id, String userID, String userName, String userImage, String title, String description, String date, String[] imageUrl) {
+    public PostModel(String id, String userID, String userName, String userImage, String title, String description, String date, String imageUrl) {
         this.id = id;
         this.userID = userID;
         this.userName = userName;
@@ -74,11 +75,11 @@ public class PostModel implements Serializable {
         this.date = date;
     }
 
-    public String[] getImageUrl() {
+    public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String[] imageUrl) {
+    public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 

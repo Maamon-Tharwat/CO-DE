@@ -3,6 +3,7 @@ package com.example.wifiscan.model;
 import java.io.Serializable;
 
 public class DonationModel implements Serializable {
+
     private String id;
     private String userID;
     private String userName;

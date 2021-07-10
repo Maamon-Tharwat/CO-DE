@@ -64,8 +64,7 @@ public class UserViewModel extends ViewModel {
                 .addOnSuccessListener(authResult -> {
                     model.setId(Objects.requireNonNull(authResult.getUser()).getUid());
                     model.setType("user");
-                    database = FirebaseFirestore.getInstance();
-                    database.collection(COLLECTION_PATH).document(model.getId()).set(model);
+                    addUser(model);
                     getCurrentUser();
                     firebaseUserMutableLiveData.setValue("Sign up successfully");
                 })
@@ -74,12 +73,18 @@ public class UserViewModel extends ViewModel {
     }
 
     public void getCurrentUser() {
-        auth=FirebaseAuth.getInstance();
-        user= auth.getCurrentUser();
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
         database = FirebaseFirestore.getInstance();
         database.collection(COLLECTION_PATH).document(user.getUid()).get()
                 .addOnSuccessListener(documentSnapshot -> userData.setValue(documentSnapshot.toObject(UserModel.class)))
                 .addOnFailureListener(e -> Log.w(TAG, "getCurrentUser: faild to load user"));
+
+    }
+
+    public void addUser(UserModel model) {
+        database = FirebaseFirestore.getInstance();
+        database.collection(COLLECTION_PATH).document(model.getId()).set(model);
 
     }
 
