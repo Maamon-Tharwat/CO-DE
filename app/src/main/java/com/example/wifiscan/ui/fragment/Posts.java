@@ -47,7 +47,7 @@ public class Posts extends Fragment {
         });
 
         postViewModel.getPosts();
-        postViewModel.posts.observe(this,postModels -> {
+        postViewModel.posts.observe(getViewLifecycleOwner(), postModels -> {
             adapter.setPosts(postModels);
             adapter.notifyDataSetChanged();
         });

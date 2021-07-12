@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profileabout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/job"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/profileJob"
+            app:layout_constraintStart_toStartOf="@+id/profileJob" />
+
+
+        <TextView
+            android:id="@+id/profileJob"
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/job"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView18"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView18" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/national_id"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/profileNatID"
+            app:layout_constraintStart_toStartOf="@+id/profileNatID" />
+
+        <TextView
+            android:id="@+id/profileNatID"
+            android:layout_width="255dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/national_id"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/infect"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup
+            android:id="@+id/infect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            app:justifyContent="center"
+            app:layout_constraintBottom_toTopOf="@+id/profileSignout"
+            app:layout_constraintEnd_toEndOf="@+id/profileSignout"
+            app:layout_constraintStart_toStartOf="@+id/profileSignout">
+            <!-- this attribute is from the underlying FlexboxLayout -->
+
+
+            <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
+                android:id="@+id/infected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:toggle_text="Infected" />
+
+        </nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup>
+
+        <Button
+            android:id="@+id/profileSignout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundbutton"
+            android:gravity="center"
+            android:text="@string/sign_out"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

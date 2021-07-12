@@ -5,31 +5,25 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.wifiscan.ui.fragment.Donations;
-import com.example.wifiscan.ui.fragment.Posts;
-import com.example.wifiscan.ui.fragment.Profile;
+import java.util.ArrayList;
 
 
 public class TabsAdapter extends FragmentPagerAdapter {
-    public TabsAdapter(@NonNull  FragmentManager fm) {
-        super(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+    private ArrayList<Fragment> fragments;
+
+    public TabsAdapter(@NonNull FragmentManager fm, ArrayList<Fragment> fragments) {
+        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        this.fragments = fragments;
     }
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position){
-            case 1:
-                return new Donations();
-            case 2:
-                return new Profile();
-            default:
-                return new Posts();
-        }
+        return fragments.get(position);
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return fragments.size();
     }
 }

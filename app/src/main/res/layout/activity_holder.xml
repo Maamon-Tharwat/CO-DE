@@ -52,7 +52,18 @@
             app:bt_colorInactive="@color/white"
             app:bt_title="Profile"
             android:textAlignment="center"
-            app:bt_icon="@drawable/ic_user"/>
+            app:bt_icon="@drawable/ic_user" />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/notificationTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            app:bt_active="false"
+            app:bt_colorActive="@color/black"
+            app:bt_colorInactive="@color/white"
+            app:bt_icon="@drawable/ic_bell"
+            app:bt_title="Notification" />
 
     </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
 

@@ -17,14 +17,16 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
 import com.example.wifiscan.R;
+import com.example.wifiscan.adapter.TabsAdapter;
 import com.example.wifiscan.databinding.FragmentProfileBinding;
 import com.example.wifiscan.model.UserModel;
-import com.example.wifiscan.ui.activities.SignInActivity;
 import com.example.wifiscan.ui.viewModels.UserViewModel;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import java.util.ArrayList;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
@@ -50,25 +52,14 @@ public class Profile extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
-        View root = binding.getRoot();
+
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
-        userViewModel.firebaseUserMutableLiveData.observe(getViewLifecycleOwner(), s -> {
-            if (s.equals("Sign out")) {
-                Intent intent = new Intent(getContext(), SignInActivity.class);
-                startActivity(intent);
-                requireActivity().finish();
-            }
-        });
+
         userViewModel.getCurrentUser();
         userViewModel.userData.observe(getViewLifecycleOwner(), userModel -> {
             if (userModel != null) {
                 binding.profileUserName.setText(userModel.getName());
-                binding.profileName.setText(userModel.getName());
-                binding.profileAddress.setText(userModel.getAddress());
-                binding.profileEmail.setText(userModel.getEmail());
-                binding.profileJob.setText(userModel.getJob());
-                binding.profileNatID.setText(userModel.getNationalID());
-                binding.profilePhone.setText(userModel.getPhone());
+
                 if (userModel.getImage() != null) {
                     int radius = 125; // corner radius, higher value = more rounded
                     int margin = 2; // crop margin, set to 0 for corners with no crop
@@ -81,7 +72,6 @@ public class Profile extends Fragment {
                 model = userModel;
             }
         });
-        binding.profileSignout.setOnClickListener(v -> userViewModel.signOut());
 
         binding.profileImageChoose.setOnClickListener(v -> {
             ImagePicker.with(this)
@@ -91,16 +81,17 @@ public class Profile extends Fragment {
                     .start();
         });
 
+        ArrayList<Fragment> fragments = new ArrayList<>();
+        fragments.add(new About());
+        fragments.add(new Setting());
+
+
+        TabsAdapter adapter = new TabsAdapter(getActivity().getSupportFragmentManager(), fragments);
+        binding.pager.setAdapter(adapter);
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 0) {
-                    binding.profileabout.setVisibility(View.VISIBLE);
-                    binding.profilesettings.setVisibility(View.GONE);
-                } else if (tab.getPosition() == 1) {
-                    binding.profileabout.setVisibility(View.GONE);
-                    binding.profilesettings.setVisibility(View.VISIBLE);
-                }
+                binding.pager.setCurrentItem(tab.getPosition());
             }
 
             @Override
@@ -113,8 +104,11 @@ public class Profile extends Fragment {
 
             }
         });
-        return root;
+
+
+        return binding.getRoot();
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
